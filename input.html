@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" id="formulario" autocomplete="off">
+        <input type="text" id="text" name="text" placeholder="escriba algo"><br>
+        <input type="text" id="letra" placeholder="Escriba letra a analizar"> <br>
+        <button type="submit" onclick="return enviar()">ENVIAR</button><br>
+        <button type="reset" onclick="limpiar()">LIMPIAR FORMULARIO</button>
+    </form>
+    <h1 id="numerodeletras"></h1>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+        
+
+        function enviar() {
+
+            var contador = 0;
+            var text = $("#text").val();
+            var letra = $("#letra").val();
+            
+            if (letra.length > 1) {
+                $("#letra").css('background-color', 'pink');
+                $("#letra").css('border', 'red');
+                $("#letra").css('color', 'orange');
+                Swal.fire('Ingrese solamente una letra')
+
+
+            } else {
+
+
+                for (let i = 0; i < text.length; i++) {
+                    if (text.charAt(i) == letra) {
+                        contador++;
+                    }
+                }
+                console.log("hay un total de "+contador)
+                $("#numerodeletras").html("hay un total de "+contador+" letras "+letra)
+
+            }
+            return false;
+        }
+
+        function limpiar() {
+            formulario.reset();
+        }
+    </script>
+</body>
+
+</html>
